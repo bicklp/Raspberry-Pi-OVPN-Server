@@ -17,6 +17,7 @@ cp /usr/share/easy-rsa /etc/openvpn/easy-rsa
 
 ## edit the vars file and change export EASY_RSA to 
 >export EASY_RSA="/etc/openvpn/easy-rsa"
+
 ```
 cd /etc/openvpn/easy-rsa
 nano vars
@@ -30,6 +31,7 @@ source ./vars
 ## build key for your server, name your server here
 >when prompted common name must equal [server name] **
 >challenge password must be left blank **
+
 ```
 ./build-key-server [server name]
 ```
@@ -37,6 +39,7 @@ source ./vars
 
 ## build key for your server, name your server here
 >challenge password must be left blank
+
 ```
 ./build-key-pass [vpn_username]
 cd /etc/openvpn/easy-rsa/keys
@@ -64,6 +67,7 @@ wget https://github.com/bicklp/Raspberry-Pi-OVPN-Server/blob/master/firewall-ope
 ## Update your interface file and add in the firewall rules file from above
 >pre-up /etc/firewall-openvpn-rules.sh
 >add line to interfaces file with a tab at the beginning
+
 ```
 nano /etc/network/interfaces
 ```
@@ -80,6 +84,7 @@ cd /etc/openvpn/easy-rsa/keys
 ```
 #Download the default file and update settings
 >Set the Public IP or DDNS name in the Default.txt file
+
 ```
 cd /etc/openvpn/easy-rsa/keys
 wget https://github.com/bicklp/Raspberry-Pi-OVPN-Server/blob/master/Default.txt
@@ -92,10 +97,12 @@ cd /etc/openvpn/easy-rsa/keys
 wget https://github.com/bicklp/Raspberry-Pi-OVPN-Server/blob/master/makeOVPN.sh
 ```
 >set permissions for the file
+
 ```
 chmod 700 makeOVPN.sh
 ```
 >run the file and enter your server / client details
+
 ```
 ./makeOVPN.sh
 #enter [vpn_username] when prompted
