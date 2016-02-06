@@ -70,8 +70,10 @@ wget https://github.com/bicklp/Raspberry-Pi-OVPN-Server/blob/master/firewall-ope
 
 
 ## Update your interface file and add in the firewall rules file from above
->pre-up /etc/firewall-openvpn-rules.sh
 >add line to interfaces file with a tab at the beginning
+
+>pre-up /etc/firewall-openvpn-rules.sh
+
 
 ```
 nano /etc/network/interfaces
