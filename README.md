@@ -1,114 +1,74 @@
 # Raspberry-Pi-OVPN-Server
 Setup Raspberry Pi as an openVPN server
 
-#Server Setup
-
+## Update the Server
 ```
 sudo -s
-```
-
-```
 apt-get update
-```
-
-```
 apt-get upgrade
 ```
 
+## Install the software
 ```
 apt-get install openvpn easy-rsa
-```
-
-```
 mkdir /etc/openvpn/easy-rsa
-```
-
-```
 cp /usr/share/easy-rsa /etc/openvpn/easy-rsa
 ```
 
+## edit the vars file and change export EASY_RSA to export EASY_RSA="/etc/openvpn/easy-rsa"
 ```
 cd /etc/openvpn/easy-rsa
-```
-
-```
 nano vars
-#change export EASY_RSA to
-export EASY_RSA="/etc/openvpn/easy-rsa"
-#change vars at bottom of file to make it easier later
 ```
 
 ```
 source ./vars
-```
-
-```
 ./clean-all
-#this will clear all existing certificates use with care
-```
-
-```
 ./build-ca
-#when prompted common name must equal [server name]
 ```
-
+## build key for your server, name your server here
 ```
 ./build-key-server [server name]
-#when prompted common name must equal [server name]
-#challenge password must be left blank
 ```
+### when prompted common name must equal [server name]
+### challenge password must be left blank
 
+## build key for your server, name your server here
 ```
 ./build-key-pass [vpn_username]
-#challenge password must be left blank
 ```
+###challenge password must be left blank
 
 ```
 cd /etc/openvpn/easy-rsa/keys
-```
-
-```
 openssl rss -in [vpn_username].key -des3 -out [vpn_username].3des.key
-```
-
-```
 cd /etc/openvpn/easy/rsa
-```
-
-```
 ./build-dh
-```
-
-```
 openvpn --genkey --secret keys/ta.key
 ```
-
+## get server conf file and update for your local settings
 ```
 wget https://github.com/bicklp/Raspberry-Pi-OVPN-Server/blob/master/server.conf -P /etc/openvpn/
-#check server.conf file for local settings
-```
 
+```
+## enable ipv4 forwarding uncomment net.ipv4.ip_forward=1
 ```
 nano /etc/sysctl.conf
-#uncomment net.ipv4.ip_forward=1
-```
-
-```
 sysctl -p
 ```
-
+## Get firewall rules and update to your local settings
 ```
-wget https://github.com/bicklp/Raspberry-Pi-OVPN-Server/blob/master/firewall-openvpn-rules.sh -P  /etc
-#check file for local settings and lan port name is correct
+cd /etc
+wget https://github.com/bicklp/Raspberry-Pi-OVPN-Server/blob/master/firewall-openvpn-rules.sh
 ```
 
 
-
+## Update your interface file and add in the firewall rules file from above
 ```
 nano /etc/network/interfaces
-#add line to interfaces file with a tab at the beginning
 pre-up /etc/firewall-openvpn-rules.sh
 ```
+###add line to interfaces file with a tab at the beginning
 
 
 
