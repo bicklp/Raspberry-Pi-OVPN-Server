@@ -54,7 +54,9 @@ cd /etc/openvpn
 wget https://github.com/bicklp/Raspberry-Pi-OVPN-Server/blob/master/server.conf
 nano server.conf
 ```
-## enable ipv4 forwarding uncomment net.ipv4.ip_forward=1
+## enable ipv4 forwarding 
+>uncomment net.ipv4.ip_forward=1
+
 ```
 nano /etc/sysctl.conf
 sysctl -p
