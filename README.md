@@ -30,6 +30,7 @@ source ./vars
 ```
 ## build key for your server, name your server here
 >when prompted common name must equal [server name]
+
 >challenge password must be left blank
 
 ```
