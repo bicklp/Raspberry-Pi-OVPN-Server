@@ -29,8 +29,8 @@ source ./vars
 ./build-ca
 ```
 ## build key for your server, name your server here
->when prompted common name must equal [server name] **
->challenge password must be left blank **
+>when prompted common name must equal [server name]
+>challenge password must be left blank
 
 ```
 ./build-key-server [server name]
