@@ -29,15 +29,17 @@ source ./vars
 ## build key for your server, name your server here
 ```
 ./build-key-server [server name]
+** when prompted common name must equal [server name] **
+** challenge password must be left blank **
 ```
-### when prompted common name must equal [server name]
-### challenge password must be left blank
+
 
 ## build key for your server, name your server here
 ```
 ./build-key-pass [vpn_username]
+>challenge password must be left blank**
 ```
-###challenge password must be left blank
+
 
 ```
 cd /etc/openvpn/easy-rsa/keys
@@ -66,9 +68,10 @@ wget https://github.com/bicklp/Raspberry-Pi-OVPN-Server/blob/master/firewall-ope
 ## Update your interface file and add in the firewall rules file from above
 ```
 nano /etc/network/interfaces
-pre-up /etc/firewall-openvpn-rules.sh
+>pre-up /etc/firewall-openvpn-rules.sh
+**add line to interfaces file with a tab at the beginning**
 ```
-###add line to interfaces file with a tab at the beginning
+
 
 
 
