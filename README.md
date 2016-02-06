@@ -50,7 +50,9 @@ openvpn --genkey --secret keys/ta.key
 ```
 ## get server conf file and update for your local settings
 ```
-wget https://github.com/bicklp/Raspberry-Pi-OVPN-Server/blob/master/server.conf -P /etc/openvpn/
+cd /etc/openvpn
+wget https://github.com/bicklp/Raspberry-Pi-OVPN-Server/blob/master/server.conf
+nano server.conf
 ```
 ## enable ipv4 forwarding uncomment net.ipv4.ip_forward=1
 ```
